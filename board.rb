@@ -1,10 +1,10 @@
 require_relative 'piece'
 require_relative 'null_piece'
+require_relative "cursor"
 
 class Board
   def initialize
     @board = blank_grid
-
   end
 
   def blank_grid
@@ -18,6 +18,11 @@ class Board
     @board[0] = royals.reverse
     @board[1] = pawns
     @board[-2] = pawns
+  end
+
+  def display
+
+    Display.new(@board).render
   end
 
   def move_piece(start_pos, end_pos)
@@ -41,6 +46,7 @@ class Board
   end
 
   def []=(pos, value)
+    p "boop. im here"
     x, y = pos
     @board[x][y] = value
   end
